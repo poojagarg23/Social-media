@@ -1,0 +1,183 @@
+body {
+  height: 100vh;
+  width: 100%;
+}
+
+.chat-display {
+  display: flex;
+  /* justify-content: space-around; */
+  width: 100%;
+  height: auto;
+  gap: 20px;
+}
+
+.img-avtar {
+  width: 20px;
+  height: 20px;
+}
+
+.chat-person {
+  width: 300px;
+  height: 1122px;
+  background: rgba(243, 245, 253, 0.58);
+}
+
+.chat-div {
+  display: flex;
+  justify-content: center;
+}
+
+.right {
+  justify-content: flex-start;
+  display: flex;
+  align-items: center;
+  margin: 10px;
+  padding-left: 10px;
+  width: 300px;
+}
+
+.left {
+  justify-content: flex-end;
+  display: flex;
+  align-items: center;
+  width: 300px;
+  margin: 10px;
+
+  padding-left: 10px;
+}
+
+.message-information {
+  background: rgba(243, 245, 253, 1);
+  border-radius: 20px;
+  /* height: 66px; */
+  height: fit-content;
+  width: 350px;
+  padding-left: 10px;
+  display: flex;
+  /* align-items: center; */
+  flex-direction: column;
+  padding: 10px;
+}
+
+.date {
+  font-size: 10px !important;
+}
+
+.message-information-personal {
+  display: flex;
+  justify-content: space-between;
+}
+
+.user-message {
+  margin-top: 10px;
+}
+
+.form-input__input {
+  border: none;
+}
+
+.input-send {
+  display: flex;
+  /* justify-content: space-between; */
+  border: 1px solid black;
+}
+
+/* .send-message {
+  display: flex;
+} */
+.form-input__input {
+  width: 530.2px;
+  outline: none;
+}
+
+/* .div-main {
+  display: flex;
+  width: auto;
+  height: auto;
+} */
+.chat-information {
+  display: flex;
+  width: fit-content;
+  height: fit-content;
+  margin-left: 97px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-data {
+  width: fit-content;
+}
+
+.smile-button {
+  border: none;
+  background: none;
+}
+
+.img-message {
+  width: 100px;
+  height: 100px;
+}
+
+.submit-send,
+.file-send {
+  border: none;
+  background: none;
+}
+
+.user-message {
+  display: flex;
+}
+
+.video {
+  width: 100px;
+  height: 100px;
+}
+
+.comment-main-div {
+  position: relative;
+  top: 25px;
+  left: 107px;
+  margin-bottom: 68px;
+  width: 100%;
+}
+
+.comment-text {
+  width: 305px;
+}
+
+.comment-div {
+  width: auto;
+
+}
+
+.chat-div {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* .select-hashtag {
+  display: none;
+} */
+@media screen and (max-width: 771px) {
+
+  /* .message-information {
+    width: 241px;
+  } */
+  .form-data {
+    width: max-content;
+  }
+
+  .input-send {
+    width: 300px;
+  }
+
+  .comment-main-div {
+    position: relative;
+    top: 0;
+    left: 0;
+    margin-bottom: 68px;
+    width: 100%;
+  }
+
+}

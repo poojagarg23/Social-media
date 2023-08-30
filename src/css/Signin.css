@@ -1,0 +1,60 @@
+body {
+  background-color: white;
+}
+
+.container-main {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  width: 100%;
+  height: 100vh;
+  /* background-image: linear-gradient(179.05deg, #FDBD4E 2.5%, #DF6C53 104.1%); */
+
+}
+
+.Link-signup {
+  text-decoration: none;
+  color: #E78052;
+  cursor: pointer;
+}
+
+.css-101ca9i-MuiTypography-root-MuiLink-root {
+  color: #E78052 !important;
+  cursor: pointer !important;
+  text-decoration: none !important;
+}
+
+.css-1y3w0vj,
+.css-1ajfkmx {
+  background: white;
+}
+
+.css-1ajfkmx {
+  width: 500px;
+
+}
+
+
+
+@media (min-width: 0px) {
+  .css-nzinn5-MuiContainer-root {
+    max-width: 0;
+  }
+}
+
+@media (min-width: 1200px) {
+
+  .container,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container-xl {
+    width: 100%;
+  }
+
+}

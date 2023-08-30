@@ -1,0 +1,11 @@
+.popular-search {
+  width: 291px;
+  height: 388px;
+  /* top: 161px;
+  left: 1099px; */
+  border-radius: 5px;
+  border: 1px;
+  /* background: linear-gradient(0deg, #cbc9c9, #cbc9c9),
+    linear-gradient(0deg, rgba(255, 255, 255, 0.58), rgba(255, 255, 255, 0.58)); */
+  border: 1px solid rgba(203, 201, 201, 1);
+}

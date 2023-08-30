@@ -1,0 +1,269 @@
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100%;
+  /* background: linear-gradient(179.05deg, #fdbd4e 2.5%, #df6c53 104.1%); */
+  background-repeat: no-repeat;
+}
+
+.mainPage {
+  width: auto;
+  height: auto;
+}
+
+.div-flex {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.btn-signup {
+  background: linear-gradient(90deg, #e67d53 -1.04%, #fdbd4f 102.34%);
+}
+
+.btn-goggle {
+  background: rgba(58, 89, 152, 1);
+}
+
+.span-or {
+  display: flex;
+  flex-direction: row;
+}
+
+.span-or:before,
+.span-or:after {
+  content: "";
+  flex: 1 1;
+  border-bottom: 1px solid rgba(226, 224, 224, 1);
+  margin: auto;
+}
+
+.span-or:before {
+  margin-right: 10px;
+}
+
+.span-or:after {
+  margin-left: 10px;
+}
+
+.link-reset:hover {
+  background-color: aliceblue;
+}
+
+.main {
+  height: 100vh;
+  width: 100%;
+}
+
+nav {
+  background: none;
+  display: flex;
+  justify-content: space-between;
+
+  /* flex-wrap: wrap; */
+}
+
+
+.flex-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+
+}
+
+.main-page-nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  flex-wrap: wrap;
+  box-shadow: 0px 1px 4px 0px #10171F33;
+
+}
+
+nav {
+  width: 100%;
+  height: 72px;
+  border: 1px;
+}
+
+.logo {
+  display: flex;
+  height: 11.63611888885498px;
+}
+
+.login-button {
+  box-shadow: 0px 1px 4px 0px rgba(16, 23, 31, 0.2);
+  border: 1px solid rgba(46, 125, 50, 1);
+  width: auto;
+}
+
+.logout-button {
+
+  width: 127px;
+  box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.25);
+}
+
+.section-div {
+  width: 90%;
+  height: 169px;
+  position: absolute;
+  top: 107px;
+  left: 50px;
+  /* right: 50px; */
+  /* border: 1px solid rgba(46, 125, 50, 1); */
+  box-shadow: 0px 0px 8px 0px rgba(46, 125, 50, 0.35);
+}
+
+.section-left-div {
+  position: absolute;
+  left: 19px;
+  height: 80px;
+  width: 80px;
+  top: 30px;
+}
+
+.section-right-div {
+  position: absolute;
+  /* width: 100%; */
+  height: 61px;
+  top: 29px;
+  left: 158px;
+}
+
+.growth {
+  font-weight: 700;
+}
+
+.section-post {
+
+  width: 90%;
+  height: 69px;
+  margin-top: 224px;
+  margin-left: 50px;
+  border-radius: 0px 0px 5px 5px;
+  background: rgba(46, 125, 50, 0.2);
+}
+
+.div-post {
+  display: flex;
+  justify-content: end;
+}
+
+.new-postbutton,
+.join-group-button {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 13px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: white;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 15px;
+  box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.25);
+  background-color: rgba(46, 125, 50, 1);
+  right: 74px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.join-group-button {
+  right: 20px;
+  width: 200px;
+}
+
+.about-us {
+  width: 363px;
+  height: auto;
+  border: 0.5px solid rgba(82, 79, 79, 0.2);
+
+  box-shadow: 0px 0px 8px 0px rgba(46, 125, 50, 0.7);
+
+  border-radius: 10px;
+}
+
+.css-4tldqc {
+  position: 0;
+}
+
+.aboutus-para {
+  font-family: Open Sans;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 22px;
+  letter-spacing: 0em;
+  text-align: left;
+  padding-bottom: 20px;
+}
+
+.span-public {
+  font-family: Open Sans;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 13px;
+  letter-spacing: 0em;
+  text-align: left;
+  position: relative;
+  left: 20px;
+}
+
+.display-button {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  /* border-bottom: 2px solid black; */
+  border-bottom: 0.5px solid rgba(82, 79, 79, 0.2);
+}
+
+.about-us {
+  height: 498px;
+}
+
+.members,
+.span-aboutus {
+  font-family: Open Sans;
+  font-size: 9px;
+  font-weight: 400;
+  line-height: 13px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.moderate {
+  font-size: 10px;
+}
+
+/* .div-main {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+} */
+.postSubmit {
+  background: rgba(46, 125, 50, 1);
+  color: white;
+  width: 100%;
+  border: none;
+  margin-top: 10px;
+}
+
+.profile {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.link {
+  text-decoration: none;
+}
+
+@media screen and (max-width:600px) {
+  .about-us {
+    width: auto;
+  }
+}

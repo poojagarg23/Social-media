@@ -1,0 +1,145 @@
+.editCover {
+  width: 157px;
+  height: 48px;
+  z-index: 0;
+  /* position: absolute;
+  top: 237px;
+  left: 1000px; */
+  border: none;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  border-radius: 8px;
+  margin-top: -75px;
+  margin-left: 1000px;
+}
+
+.profilecoverImg {
+  width: fit-content;
+  height: 299px;
+  background-size: cover;
+  /* object-fit: contain; */
+}
+
+.filetype {
+  display: none;
+}
+
+.photoUrl {
+  width: 145px;
+  height: 145px;
+  position: absolute;
+  top: 208px;
+  left: 50px;
+  border-radius: 72.5px;
+}
+
+.addProfileImage-button {
+  border: none;
+  background: none;
+}
+
+.addProfileImage {
+  width: 28px;
+  height: 28px;
+  position: absolute;
+  top: 322px;
+  left: 154px;
+}
+
+.information-Person {
+  width: 661px;
+  height: 253px;
+  position: absolute;
+  top: 380px;
+  left: 50px;
+}
+
+.information-Person>h6 {
+  width: 623px;
+  /* height: 93px; */
+}
+
+.person-name {
+  /* background: rgba(16, 23, 31, 1); */
+  width: 226px;
+  /* height: 30px; */
+  font-family: Open Sans;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 30px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.person-bio {
+  width: 623px;
+  /* height: 93px; */
+  font-family: Open Sans;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 31px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.edit-button {
+  width: 141px;
+  height: 48px;
+
+  border-radius: 8px;
+}
+
+.person-bio-information,
+.information {
+  display: flex;
+  margin: 45px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.editcover {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.edit {
+  border: none;
+  width: 141px;
+  height: 48px;
+  border-radius: 8px;
+  background: rgba(46, 125, 50, 1);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.information>h6 {
+  font-size: 14px;
+}
+
+.profile-page {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+}
+
+.profilecoverImg {
+  width: auto;
+}
+
+.information {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+@media screen and (max-width: 771px) {
+  .person-bio {
+    width: auto;
+  }
+}
