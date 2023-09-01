@@ -7,13 +7,20 @@ import {
   collection,
   addDoc,
   serverTimestamp,
+  doc,
+  orderBy,
+  onSnapshot,
+  query,
+  getDoc,
+  getDocs,
+  updateDoc,
 } from "firebase/firestore";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { app, auth, firebase, storage } from "../Service/firebase.config";
 import smile from "../images/smile.png";
 import imagePhoto from "../images/imagePhoto.png";
 import Picker from "emoji-picker-react";
-import profileImage from "../images/userProfile.webp";
+import profilePhoto from "../images/userProfile.webp";
 
 import { Input } from "antd";
 import TextArea from "antd/es/input/TextArea";
@@ -32,22 +39,29 @@ export default function CreatePost() {
   const [growth, setGrowth] = useState("");
   const [hashtag, setHashtag] = useState("");
   const [selectedImages, setSelectedImages] = useState([]);
-  const [downloadURLs, setDownloadURLs] = useState([]);
-  // const [hashtagSuggestions, setHashtagSuggestions] = useState([]);
-  // const [personImage, setPersonImage] = useState();
   const [openSmile, setOpenSmile] = useState(false);
   const [addPic, setAddPic] = useState(false);
-  const [valuehashtag, setValuehashtag] = useState("");
+  const [addName, setAddName] = useState(null)
   const [data, setdata] = useState();
   const [open, setOpen] = useState(false);
   const firestore = getFirestore(app);
   const storageRef = getStorage(app);
-
-  // console.log(storageRef, "storageUrl");
-  // console.log(downloadURLs, "urlsdownload");
   const hashtagFilter = [];
   const inputRef = useRef();
   // console.log(hashtag, "hashtag");
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const colRef = collection(firebase, "NewUser");
+      const docsSnap = await getDocs(colRef);
+      docsSnap.forEach(doc => {
+        console.log(doc.data(), "newUserDocs");
+        setText(doc.data())
+      })
+    }
+    fetchData();
+
+  }, [])
 
   const handlesubmit = async (e) => {
     e.preventDefault();
@@ -68,8 +82,9 @@ export default function CreatePost() {
         hashtag: hashtag,
         imageUrl: imageUrl,
         date: serverTimestamp(),
-        displayName: user.displayName,
-        profileIamge: profileImage,
+        displayName: user.displayName || text.ProfileName,
+        profileIamge: profilePhoto || user.photoURL,
+        email: user.email,
         follow: false,
         like: [],
         bio: "",
@@ -94,12 +109,47 @@ export default function CreatePost() {
     } catch (error) {
       console.log(error);
     }
+
+
   };
+  useEffect(() => {
+    const dataFetch = async () => {
+      try {
+        if (text) {
+          const updateRef = doc(firebase, "NewUser")
+          const data = {
+            ProfileName: addName.displayName
+          }
+          await updateDoc(updateRef, data)
+
+        }
+
+      }
+      catch (error) {
+        console.log(error, "error")
+      }
+
+    }
+    dataFetch()
+
+  })
 
   const handleImageUpload = (event) => {
     setSelectedImages([...event.target.files]);
   };
+  useEffect(() => {
+    const fetchData = async () => {
+      const colRef = collection(firebase, "posts");
+      const docsSnap = await getDocs(colRef);
+      docsSnap.forEach(doc => {
+        console.log(doc.data(), "dataNewUser");
+        setAddName(doc.data())
+      })
+    }
+    fetchData()
 
+  }, [])
+  console.log(addName, "addname")
   const handleSelect = (e) => {
     setHashtag(e.target.value);
     let text = e.target.value;
@@ -159,8 +209,10 @@ export default function CreatePost() {
         {/* <div></div> */}
         <div>
           <div className="post-userProfile">
-            <img className="userPhotoUrl" src={user.photoURL || profileImage} />
-            <span>{user.displayName}</span>
+            <img className="userPhotoUrl" src={user.photoURL || profilePhoto} />
+            {console.log(text.displayName, "text.displayname")}
+            <span>{user.displayName || text.ProfileName
+            }</span>
           </div>
           <textarea
             id="outlined-multiline-flexible"

@@ -17,8 +17,8 @@ import {
   FacebookAuthProvider,
   getAuth,
 } from "firebase/auth";
-import { useState } from "react";
-import { app } from "../Service/firebase.config";
+import { useState, useEffect } from "react";
+import { app, firebase } from "../Service/firebase.config";
 import { useNavigate } from "react-router";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -32,6 +32,7 @@ import LockIcon from "@mui/icons-material/Lock";
 import ".././css/Main.css";
 import GoogleIcon from "@mui/icons-material/Google";
 import SigninFacebook from "../SigninFacebook";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 
 const defaultTheme = createTheme();
 
@@ -109,11 +110,25 @@ export default function SignUp() {
     }
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     // setTimeout(() => {
 
     // }, timeout);
+    const dataNewuser = {
+      ProfileName: username,
+      email: email,
+      password: password,
+      confirmPassword: confirmPassword,
+      date: serverTimestamp(),
+
+    }
+    try {
+      await addDoc(collection(firebase, "NewUser"), dataNewuser);
+      console.log("added sucessfully");
+    } catch (error) {
+      console.error("Error adding post to Firestore:", error);
+    }
     setusername("");
     setconfirmPassword("");
     setphonenumber("");
@@ -135,6 +150,7 @@ export default function SignUp() {
         toast.error(`Sign-in error: ${error.message}`);
       });
   };
+
   return (
     <div className="container">
       <div className="container-main">

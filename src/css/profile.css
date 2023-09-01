@@ -74,6 +74,48 @@
   text-align: left;
 }
 
+.tabs-Profile {
+  display: flex;
+  /* justify-content: center; */
+  width: auto;
+  height: auto;
+  /* top: 671px; */
+  margin-left: 50px;
+  border-radius: 22px;
+  border: 1px;
+  border: 1px solid #C4C4C4;
+
+}
+
+/* .tab-desc {
+  margin-left: 262px;
+} */
+
+:where(.css-dev-only-do-not-override-fpg3f5).ant-tabs>.ant-tabs-nav .ant-tabs-nav-list,
+:where(.css-dev-only-do-not-override-fpg3f5).ant-tabs>div>.ant-tabs-nav .ant-tabs-nav-list {
+  transform: translate(0px, 0px);
+  display: flex;
+  place-content: flex-start space-evenly;
+  gap: 100px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between !important;
+}
+
+.postImageUrl {
+  width: 224px;
+  height: 256px;
+  border-radius: 14px
+}
+
+/* :where(.css-dev-only-do-not-override-fpg3f5).ant-tabs .ant-tabs-tab {
+  margin-left: 262px;
+} */
+
+:where(.css-dev-only-do-not-override-fpg3f5).ant-tabs {
+  width: 100%;
+}
+
 .person-bio {
   width: 623px;
   /* height: 93px; */
@@ -83,6 +125,24 @@
   line-height: 31px;
   letter-spacing: 0em;
   text-align: left;
+  display: flex;
+  gap: 10px;
+}
+
+.main-div-Photos {
+
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  list-style: none;
+  font-size: 100%;
+  font-family: "Big Shoulders Stencil Display";
+  font-weight: 500;
+  position: relative;
+  margin: auto;
+  padding: 0;
+
 }
 
 .edit-button {
@@ -91,6 +151,24 @@
 
   border-radius: 8px;
 }
+
+.show-like-length {
+  position: relative;
+  /* border: 3px solid white; */
+  padding: 5px;
+  /* border-radius: 50%;   */
+  top: 91px;
+  bottom: 0;
+  right: 68px;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+}
+
+.length-post {
+  color: red;
+}
+
 
 .person-bio-information,
 .information {
@@ -141,5 +219,14 @@
 @media screen and (max-width: 771px) {
   .person-bio {
     width: auto;
+  }
+
+  /* :where(.css-dev-only-do-not-override-fpg3f5).ant-tabs>.ant-tabs-nav .ant-tabs-nav-list,
+  :where(.css-dev-only-do-not-override-fpg3f5).ant-tabs>div>.ant-tabs-nav .ant-tabs-nav-list {
+    gap: 0;
+  } */
+
+  :where(.css-dev-only-do-not-override-fpg3f5).ant-tabs .ant-tabs-tab {
+    margin-left: 0 !important;
   }
 }

@@ -101,6 +101,7 @@ export default function MainPage() {
                     <Modal.Title className="modal-title"><b>Create Post</b></Modal.Title>
                   </Modal.Header>
                   <Modal.Body>
+
                     <CreatePost />
                   </Modal.Body>
 

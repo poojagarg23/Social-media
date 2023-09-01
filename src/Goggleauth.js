@@ -23,8 +23,7 @@ export const GoogleAuth = async () => {
       email: res.user.email,
       phone: res.user.phoneNumber,
       photoUrl: res.user.photoURL,
-      followers: [],
-      followings: [],
+
       notificationIndexCount: 0,
       createdAt: Date.now().toString(),
     };

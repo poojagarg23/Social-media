@@ -22,8 +22,10 @@ import {
   orderBy,
   onSnapshot,
   getDoc,
+  getDocs,
 } from "firebase/firestore";
 import { Button, ButtonGroup, Modal } from "react-bootstrap";
+import ProfileDataInformation from "../pages/ProfileData";
 
 // const context = createContext();
 const Profile = () => {
@@ -41,20 +43,47 @@ const Profile = () => {
   const [editcoverImage, setEditcoverImage] = useState("");
   const [profileIamge, setProfileIamge] = useState("");
   const [show, setShow] = useState(false);
-  const [stateUpdate, setStateupdate] = useState("");
-  // const initialState = {
-  //   name: data.displayName,
-  // };
+  const [posts, setPosts] = useState();
+  const [dataShow, setDataShow] = useState(false)
+  useEffect(() => {
+    const fetchPosts = () => {
+      const postsRef = collection(firebase, "posts");
+
+      const q = query(postsRef, orderBy("date", "desc"));
+      const unsubscribe = onSnapshot(q, async (snapshot) => {
+        try {
+          const updatedPosts = snapshot.docs.map((doc) => ({
+            id: doc.id,
+            ...doc.data(),
+          }));
+          // console.log(updatedPosts, "iiiiii");
+          setPosts(updatedPosts);
+        } catch (error) {
+          console.error("Error fetching data: ", error);
+        }
+      });
+
+      return unsubscribe;
+    };
+
+    const unsubscribe = fetchPosts();
+
+    return () => {
+      unsubscribe();
+    };
+  }, []);
+  console.log(posts, "posts")
   const [update, setUpdate] = useState({});
   const [dataUpdate, setDataUpdate] = useState();
   const [dataValue, setDataValue] = useState({
-    displayName: data?.displayName || "",
-    bio: data?.bio || "",
-    location: data?.location || "",
-    age: data?.age || "",
+    displayName: posts?.displayName || "",
+    bio: posts?.bio || "",
+    location: posts?.location || "",
+    age: posts?.age || "",
   });
 
-  console.log(update, "updateupdate");
+
+  console.log(dataValue, "dataValuedataValuedataValue");
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -117,6 +146,7 @@ const Profile = () => {
       }
     }
   };
+
   const fetchData = async () => {
     try {
       const userDocRef = doc(firebase, "posts", data.id);
@@ -146,8 +176,9 @@ const Profile = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     // setDataUpdate({ ...dataUpdate, dataValue })
+
     setPostData(update);
-    if (dataValue) {
+    if (dataShow) {
       const dataref = doc(firebase, "posts", data.id);
       const dataUpdateForm = {
         displayName: dataValue.displayName,
@@ -169,7 +200,29 @@ const Profile = () => {
     setDataValue({ ...dataValue, [e.target.name]: e.target.value });
   };
   console.log(data.id, dataUpdate, "from-page");
+  // useEffect(() => {
+  //   const getCurrentUserEmail = () => {
 
+  //     const user = auth.currentUser
+  //     console.log(user, "userEmail")
+  //     if (user) {
+  //       return user.email;
+  //     } else {
+  //       return null;
+  //     }
+  //   };
+
+  //   const currentUserEmail = getCurrentUserEmail();
+  //   console.log(currentUserEmail, "currentUserEmail")
+  //   if (currentUserEmail !== dataValue.email) {
+  //     console.log("userIs NOt login");
+  //     setDataShow(false)
+  //     return;
+  //   } else {
+  //     setDataShow(true);
+  //   }
+
+  // }, [])
   return (
     <div className="profile-page">
       {editcoverImage ? (
@@ -220,21 +273,20 @@ const Profile = () => {
           {/* <h6>{}</h6> */}
           <h6 className="person-bio">
             <b> Bio</b>
-            {dataValue.bio}
+            <span>{dataValue.bio}</span>
+
             {/* {dataUpdate ? dataUpdate.bio : data?.bio} */}
           </h6>
-          <h6>
+          <h6 className="person-bio">
             {" "}
             <b>Locations</b>
             {dataValue.location}
           </h6>
-          <h6>
+          <h6 className="person-bio">
             <b>Age</b>
             {dataValue.age}
           </h6>
-          <h6>
-            <b>Website Link</b>
-          </h6>
+
         </div>
 
         <div className="edit-button">
@@ -248,54 +300,51 @@ const Profile = () => {
           >
             Edit Profile
           </ButtonGroup>
+
           <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton>
               <Modal.Title>New Post</Modal.Title>
             </Modal.Header>
             <Modal.Body>
               <form className="form-profile" onSubmit={handleSubmit}>
-                <input
-                  placeholder="Add your username here..."
-                  type="text"
-                  value={dataValue.displayName}
-                  name="displayName"
-                  onChange={handleChange}
-                />
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">UserName</label>
+                  <input type="text" name="displayName" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value={dataValue.displayName} onChange={handleChange} />
+
+                </div>
+
                 {/* <label>Bio:</label> */}
-                <input
-                  placeholder="add Your BIO here.."
-                  type="text"
-                  name="bio"
-                  value={dataValue.bio}
-                  onChange={handleChange}
-                />
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Bio</label>
+                  <input type="text" name="bio" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value={dataValue.bio} onChange={handleChange} />
 
-                <input
-                  placeholder="Add your locations.."
-                  type="text"
-                  name="location"
-                  value={dataValue.location}
-                  onChange={handleChange}
-                />
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Location</label>
+                  <input type="text" name="location" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value={dataValue.location} onChange={handleChange} />
 
-                <input
-                  placeholder="Add your Age.."
-                  type="text"
-                  name="age"
-                  value={dataValue.age}
-                  onChange={handleChange}
-                />
-                <button type="submit">submit</button>
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Age</label>
+                  <input type="number" name="age" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value={dataValue.age} onChange={handleChange} />
+
+                </div>
+
               </form>
             </Modal.Body>
             <Modal.Footer>
               <Button variant="secondary" onClick={handleClose}>
-                Close
+                Submit
               </Button>
             </Modal.Footer>
           </Modal>
+
         </div>
       </div>
+      <div>
+        <ProfileDataInformation ProfileName={dataValue.displayName} />
+      </div>
+
     </div>
   );
 };

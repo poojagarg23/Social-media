@@ -169,7 +169,7 @@ const Newest = () => {
                     <div className="span-class-1">
                       <span>
                         <img src={likeimage} alt="like" />
-                        {}
+                        { }
                       </span>
                       <span>
                         <img src={calender} alt="calender" />
